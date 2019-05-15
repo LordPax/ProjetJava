@@ -1,4 +1,4 @@
 # projet java
 
 __commande git :__
-* git add *.java diagrammes _(*.java pour éviter d'ajouter les .class)_
+* git add \*.java diagrammes _(\*.java pour éviter d'ajouter les .class)_
