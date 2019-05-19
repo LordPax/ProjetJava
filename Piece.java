@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Piece{
 	private int x;
 	private int y;
