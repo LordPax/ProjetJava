@@ -8,10 +8,10 @@ public class Piece{
 	private int nbCase;
 	private int pts;
 	private int couleur;
-	private String test;
+	protected String test;
 
-	public Piece(){
-		this.test = "test";
+	public Piece(String str){
+		this.test = str;
 	}
 	public String getTest(){
 		return this.test;
