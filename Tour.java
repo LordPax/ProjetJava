@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
-public class Pion extends Piece implements InterPion{
-	public Pion(int couleur){
+public class Tour extends Piece implements InterTour{
+	public Tour(int couleur){
 		super(couleur);
 		//this.setTest(this.getNom());
 		//this.test = "0";

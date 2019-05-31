@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
-public class Pion extends Piece implements InterPion{
-	public Pion(int couleur){
+public class Roi extends Piece implements InterRoi{
+	public Roi(int couleur){
 		super(couleur);
-		//this.setTest(this.getNom());
+		//this.test = this.nom;
 		//this.test = "0";
 	}
 
