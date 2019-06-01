@@ -9,4 +9,5 @@ public interface InterFou{
 	public final String nom = "Fou";
 	public final String symboleB = "♗";
 	public final String symboleN = "♝";
+	public final int numPiece = 5;
 }

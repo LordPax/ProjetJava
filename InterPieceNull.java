@@ -9,4 +9,5 @@ public interface InterPieceNull{
 	public final String nom = "PN";
 	public final String symboleB = ".";
 	public final String symboleN = ".";
+	public final int numPiece = 0;
 }

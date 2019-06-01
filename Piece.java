@@ -38,4 +38,5 @@ public abstract class Piece{
 
 	public abstract String getNom();
 	public abstract String getSymbole();
+	public abstract int getNumPiece();
 }

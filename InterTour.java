@@ -9,4 +9,5 @@ public interface InterTour{
 	public final String nom = "Tour";
 	public final String symboleB = "♖";
 	public final String symboleN = "♜";
+	public final int numPiece = 3;
 }

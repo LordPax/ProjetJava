@@ -7,7 +7,4 @@ public class Joueur{
 	public Joueur(){
 		
 	}
-	public void deplacerPion(int x, int y, int dirX, int dirY){
-
-	}
 }

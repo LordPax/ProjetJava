@@ -9,4 +9,5 @@ public interface InterPion{
 	public final String nom = "Pion";
 	public final String symboleB = "♙";
 	public final String symboleN = "♟";
+	public final int numPiece = 6;
 }

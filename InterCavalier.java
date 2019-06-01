@@ -9,4 +9,5 @@ public interface InterCavalier{
 	public final String nom = "Cavalier";
 	public final String symboleB = "♘";
 	public final String symboleN = "♞";
+	public final int numPiece = 4;
 }

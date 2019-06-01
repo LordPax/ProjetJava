@@ -13,4 +13,7 @@ public class PieceNull extends Piece implements InterPieceNull{
 	public String getSymbole(){
 		return (this.couleur == 0) ? this.symboleB : this.symboleN;
 	}
+	public int getNumPiece(){
+		return this.numPiece;
+	}
 }
