@@ -52,35 +52,35 @@ public class Echequier {
 		}
 		return this.matrice.get(x).get(y);
 	}
-	public void setEchec(int x, int y, int p, int c){ // x, y : coord de la piece; p : numero de la piece; c : couleur de la piece en corrélation avec la valeur 0 ou 1 du joueur
-		if (x < 0 || x >= 8  || y < 0 || y >= 8 || p < 0 || p >= 7 || c < 0 || c > 1){
-			x = 0;
-			y = 0;
-			p = 0;
-			c = 0;
+	public int setEchec(int x, int y, int p, int c){ // x, y : coord de la piece; p : numero de la piece; c : couleur de la piece en corrélation avec la valeur 0 ou 1 du joueur
+		if (x >= 0 && x <= 8 && y >= 0 && y <= 8 && p >= 0 && p <= 8 && c >= 0 && c <= 8){
+			switch(p){
+				case 0:
+					this.matrice.get(x).add(y, new PieceNull(c));
+					break;
+				case 1:
+					this.matrice.get(x).add(y, new Roi(c));
+					break;
+				case 2:
+					this.matrice.get(x).add(y, new Dame(c));
+					break;
+				case 3:
+					this.matrice.get(x).add(y, new Tour(c));
+					break;
+				case 4:
+					this.matrice.get(x).add(y, new Cavalier(c));
+					break;
+				case 5:
+					this.matrice.get(x).add(y, new Fou(c));
+					break;
+				case 6:
+					this.matrice.get(x).add(y, new Pion(c));
+					break;
+			}
+			return 0;
 		}
-		switch(p){
-			case 0:
-				this.matrice.get(x).add(y, new PieceNull(c));
-				break;
-			case 1:
-				this.matrice.get(x).add(y, new Roi(c));
-				break;
-			case 2:
-				this.matrice.get(x).add(y, new Dame(c));
-				break;
-			case 3:
-				this.matrice.get(x).add(y, new Tour(c));
-				break;
-			case 4:
-				this.matrice.get(x).add(y, new Cavalier(c));
-				break;
-			case 5:
-				this.matrice.get(x).add(y, new Fou(c));
-				break;
-			case 6:
-				this.matrice.get(x).add(y, new Pion(c));
-				break;
+		else{
+			return 1;
 		}
 	}
 }
