@@ -46,11 +46,12 @@ public class Echequier {
 	}
 
 	public Piece getEchec(int x, int y){
-		if (x < 0 || x >= 8 || y < 0 || y >= 8){
-			x = 0;
-			y = 0;
+		if (x >= 0 && x <= 8 && y >= 0 && y <= 8){
+			return this.matrice.get(x).get(y);
 		}
-		return this.matrice.get(x).get(y);
+		else{
+			return new PieceNull(0);
+		}
 	}
 	public int setEchec(int x, int y, int p, int c){ // x, y : coord de la piece; p : numero de la piece; c : couleur de la piece en corrélation avec la valeur 0 ou 1 du joueur
 		if (x >= 0 && x <= 8 && y >= 0 && y <= 8 && p >= 0 && p <= 8 && c >= 0 && c <= 8){
