@@ -11,9 +11,15 @@ public class Partie{
 	public void lancerPartie(){
 		this.afficher();
 		System.out.println(this.deplacerPiece(1, 1, 3, 1, 0)); // déplacement d'une piece
+		this.afficher();
 		System.out.println(this.deplacerPiece(6, 7, 4, 7, 1));
+		this.afficher();
 		System.out.println(this.deplacerPiece(6, 6, 5, 6, 1)); // retourne 1
+		this.afficher();
+		System.out.println(this.deplacerPiece(1, 3, 3, 3, 0)); // retourne 1
+		this.afficher();
 		System.out.println(this.deplacerPiece(6, 7, 4, 7, 3)); // retourne 3
+		this.afficher();
 		System.out.println(this.deplacerPiece(4, 4, 4, 7, 1)); // retourne 2
 		this.afficher();
 	}
@@ -30,7 +36,7 @@ public class Partie{
 		int num = this.echequier.getEchec(x, y).getNumPiece(); // "copie" la piece au coord initial
 		int couleur = this.echequier.getEchec(x, y).getCouleur(); // copie la couleur
 
-		if (x >= 0 && x <= 8 && y >= 0 && y <= 8 && dx >= 0 && dx <= 8 && dy >= 0 && dy <= 8 && (joueur == 0 || joueur == 1)) {
+		if (x >= 0 && x < 8 && y >= 0 && y < 8 && dx >= 0 && dx < 8 && dy >= 0 && dy < 8 && (joueur == 0 || joueur == 1)) {
 			if (num != 0){
 				if (couleur == joueur) {
 					this.echequier.setEchec(x, y, 0, 0); // remplace la piece au coord initial par une piece null
