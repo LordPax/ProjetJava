@@ -42,12 +42,11 @@ public class Echequier {
 		this.matrice.get(7).add(new Fou(1));
 		this.matrice.get(7).add(new Cavalier(1));
 		this.matrice.get(7).add(new Tour(1));
-
 	}
 
 	public Piece getEchec(int x, int y){
-		if (x >= 0 && x <= 8 && y >= 0 && y <= 8){
-			return this.matrice.get(x).get(y);
+		if (x >= 0 && x < 8 && y >= 0 && y < 8){
+			return this.matrice.get(y).get(x);
 		}
 		else{
 			return new PieceNull(0);
@@ -57,25 +56,25 @@ public class Echequier {
 		if (x >= 0 && x < 8 && y >= 0 && y < 8 && p >= 0 && p < 7 && (c == 0 || c == 1)){
 			switch(p){
 				case 0:
-					this.matrice.get(x).add(y, new PieceNull(c));
+					this.matrice.get(y).add(x, new PieceNull(c));
 					break;
 				case 1:
-					this.matrice.get(x).add(y, new Roi(c));
+					this.matrice.get(y).add(x, new Roi(c));
 					break;
 				case 2:
-					this.matrice.get(x).add(y, new Dame(c));
+					this.matrice.get(y).add(x, new Dame(c));
 					break;
 				case 3:
-					this.matrice.get(x).add(y, new Tour(c));
+					this.matrice.get(y).add(x, new Tour(c));
 					break;
 				case 4:
-					this.matrice.get(x).add(y, new Cavalier(c));
+					this.matrice.get(y).add(x, new Cavalier(c));
 					break;
 				case 5:
-					this.matrice.get(x).add(y, new Fou(c));
+					this.matrice.get(y).add(x, new Fou(c));
 					break;
 				case 6:
-					this.matrice.get(x).add(y, new Pion(c));
+					this.matrice.get(y).add(x, new Pion(c));
 					break;
 			}
 			return 0;
