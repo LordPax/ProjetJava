@@ -13,7 +13,7 @@ public class Echequier {
 
 		// placement des pieces
 
-		this.matrice.get(0).add(new Tour(0));
+		/*this.matrice.get(0).add(new Tour(0));
 		this.matrice.get(0).add(new Cavalier(0));
 		this.matrice.get(0).add(new Fou(0));
 		this.matrice.get(0).add(new Dame(0));
@@ -41,7 +41,13 @@ public class Echequier {
 		this.matrice.get(7).add(new Roi(1));
 		this.matrice.get(7).add(new Fou(1));
 		this.matrice.get(7).add(new Cavalier(1));
-		this.matrice.get(7).add(new Tour(1));
+		this.matrice.get(7).add(new Tour(1));*/
+
+		for (int i = 0; i < 8; i++){ 
+			for (int j = 0; j < 8; j++){
+				this.matrice.get(i).add(new PieceNull(0)); // placement du vide
+			}
+		}
 	}
 
 	public Piece getEchec(int x, int y){
@@ -56,25 +62,25 @@ public class Echequier {
 		if (x >= 0 && x < 8 && y >= 0 && y < 8 && p >= 0 && p < 7 && (c == 0 || c == 1)){
 			switch(p){
 				case 0:
-					this.matrice.get(y).add(x, new PieceNull(c));
+					this.matrice.get(y).set(x, new PieceNull(c));
 					break;
 				case 1:
-					this.matrice.get(y).add(x, new Roi(c));
+					this.matrice.get(y).set(x, new Roi(c));
 					break;
 				case 2:
-					this.matrice.get(y).add(x, new Dame(c));
+					this.matrice.get(y).set(x, new Dame(c));
 					break;
 				case 3:
-					this.matrice.get(y).add(x, new Tour(c));
+					this.matrice.get(y).set(x, new Tour(c));
 					break;
 				case 4:
-					this.matrice.get(y).add(x, new Cavalier(c));
+					this.matrice.get(y).set(x, new Cavalier(c));
 					break;
 				case 5:
-					this.matrice.get(y).add(x, new Fou(c));
+					this.matrice.get(y).set(x, new Fou(c));
 					break;
 				case 6:
-					this.matrice.get(y).add(x, new Pion(c));
+					this.matrice.get(y).set(x, new Pion(c));
 					break;
 			}
 			return 0;

@@ -9,24 +9,23 @@ public class Partie{
 		this.echequier = new Echequier();
 	}
 	public void lancerPartie(){
+		this.echequier.setEchec(3, 1, 1, 0);
+		this.echequier.setEchec(3, 6, 1, 1);
 		this.afficher();
-		System.out.println(this.deplacerPiece(1, 1, 1, 3, 0)); // déplacement d'une piece
+		System.out.println(this.deplacerPiece(3, 1, 3, 3, 0));
+		//System.out.println(this.deplacerPiece(3, 6, 3, 4, 1));
 		this.afficher();
-		System.out.println(this.deplacerPiece(7, 6, 7, 4, 1));
-		this.afficher();
-		System.out.println(this.echequier.getEchec(7, 6).getNom());
-		System.out.println(this.deplacerPiece(5, 6, 5, 5, 1)); // retourne 1
-		this.afficher();
-		System.out.println(this.echequier.getEchec(7, 6).getNom());
-		System.out.println(this.deplacerPiece(2, 1, 2, 3, 0)); // retourne 1
-		this.afficher();
-		// System.out.println(this.deplacerPiece(6, 7, 4, 7, 3)); // retourne 3
+
+
+		// System.out.println(this.deplacerPiece(1, 1, 1, 3, 0)); // déplacement d'une piece
 		// this.afficher();
-		// System.out.println(this.deplacerPiece(4, 4, 4, 7, 1)); // retourne 2
+		// System.out.println(this.deplacerPiece(7, 6, 7, 4, 1));
 		// this.afficher();
-		// System.out.println(this.deplacerPiece(6, 4, 4, 4, 1));
+		// System.out.println(this.echequier.getEchec(7, 6).getNom());
+		// System.out.println(this.deplacerPiece(5, 6, 5, 5, 1)); // retourne 1
 		// this.afficher();
-		// System.out.println(this.deplacerPiece(1, 2, 4, 4, 1));
+		// System.out.println(this.echequier.getEchec(7, 6).getNom());
+		// System.out.println(this.deplacerPiece(2, 1, 2, 3, 0)); // retourne 1
 		// this.afficher();
 	}
 	public void afficher(){
@@ -41,14 +40,38 @@ public class Partie{
 	public int deplacerPiece(int x, int y, int dx, int dy, int joueur){ // x, y : coord initial; dx, dy : coord d'arriver; joueur : couleur du joueur
 		int num = this.echequier.getEchec(x, y).getNumPiece(); // "copie" la piece au coord initial
 		int couleur = this.echequier.getEchec(x, y).getCouleur(); // copie la couleur
+		int dep = 0, deb0 = 0, deb1 = 0;
 
 		if (x >= 0 && x < 8 && y >= 0 && y < 8 && dx >= 0 && dx < 8 && dy >= 0 && dy < 8 && (joueur == 0 || joueur == 1)) {
 			if (num != 0){
 				if (couleur == joueur) {
-					this.echequier.setEchec(x, y, 0, couleur); // remplace la piece au coord initial par une piece null
-					this.echequier.setEchec(dx, dy, num, couleur); // remplace la piece null au coord d'arriver par la piece copier au par avant
+					switch (num) {
+						case 1 :
+							if (true){
+								this.echequier.setEchec(x, y, 0, couleur); // remplace la piece au coord initial par une piece null
+								this.echequier.setEchec(dx, dy, num, couleur); // remplace la piece null au coord d'arriver par la piece copier au par avant
+							}
+							else{
+								return 4;
+							}
+							break;
 
+						case 6 :
+							dep = (couleur == 0) ? 1 : -1;
+							deb0 = (y == 1 && couleur == 0) ? 2 : 1;
+							deb1 = (y == 6 && couleur == 1) ? 2 : 1;
+
+							if (x == dx && ((dy - y) == deb0 * dep || (dy - y) == deb1 * dep)){
+								this.echequier.setEchec(x, y, 0, couleur); // remplace la piece au coord initial par une piece null
+								this.echequier.setEchec(dx, dy, num, couleur); // remplace la piece null au coord d'arriver par la piece copier au par avant
+							}
+							else{
+								return 4;
+							}
+							break;
+					}
 					return 0; // retourne 0 si tout ce passe bien
+					
 				}
 				else{
 					return 1; // retourne 1 si la couleur du joueur est différente de la couleur de la piece choisi
