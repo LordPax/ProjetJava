@@ -13,7 +13,7 @@ public class Partie{
 		this.echequier.setEchec(3, 6, 2, 1);
 		this.echequier.setEchec(3, 3, 6, 1);
 		this.afficher();
-		System.out.println(this.deplacerPiece(3, 6, 3, 2, 1));
+		System.out.println(this.deplacerPiece(3, 6, 3, 0, 1));
 		this.afficher();
 
 		// System.out.println(this.deplacerPiece(1, 1, 1, 3, 0)); // déplacement d'une piece
@@ -43,7 +43,12 @@ public class Partie{
 		if (x >= 0 && x < 8 && y >= 0 && y < 8 && dx >= 0 && dx < 8 && dy >= 0 && dy < 8 && (joueur == 0 || joueur == 1)) {
 			if (num != 0){
 				if (couleur == joueur) {
-					return deplacementValide(x, y, dx, dy, joueur, num, couleur);
+					if (this.trajOk(x, y, dx, dy) == 0) {	
+						return deplacementValide(x, y, dx, dy, joueur, num, couleur);
+					}
+					else{
+						return 5;
+					}
 				}
 				else{
 					return 1; // retourne 1 si la couleur du joueur est différente de la couleur de la piece choisi
@@ -109,6 +114,18 @@ public class Partie{
 		return 0; // retourne 0 si tout ce passe bien
 	}
 	public int trajOk(int x, int y, int dx, int dy){
+		int rx = dx - x; // coord relatif x
+		int ry = dy - y; // coord relatif y
+		int num = 0;
+
+		for (int i = 0; i >= ry; i--) {
+			num = this.echequier.getEchec(x, y + i).getNumPiece();
+			System.out.println(num);
+			if (num != 0) {
+				return 1;
+			}
+		}
+
 		return 0;
 	}
 }
