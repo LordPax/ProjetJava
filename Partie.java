@@ -130,9 +130,9 @@ public class Partie{
 		else {diry = 0;}
 
 		if (num != 4){
-			for (int i = 1, j = 1; i <= Math.abs(rx) || i <= Math.abs(ry); i++, j++) {
+			for (int i = 1; i <= Math.abs(rx) || i <= Math.abs(ry); i++) {
 				coordx = i * dirx;
-				coordy = j * diry;
+				coordy = i * diry;
 				num = this.echequier.getEchec(x + coordx, y + coordy).getNumPiece();
 				if (num != 0) {
 					return 1;
