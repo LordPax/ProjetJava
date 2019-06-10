@@ -10,10 +10,11 @@ public class Partie{
 	}
 	public void lancerPartie(){
 		//this.echequier.setEchec(3, 1, 2, 0);
-		this.echequier.setEchec(3, 6, 2, 1);
-		this.echequier.setEchec(3, 3, 6, 1);
+		this.echequier.setEchec(3, 4, 4, 1);
+		this.echequier.setEchec(2, 2, 6, 1);
+		
 		this.afficher();
-		System.out.println(this.deplacerPiece(3, 6, 3, 0, 1));
+		System.out.println(this.deplacerPiece(3, 4, 4, 2, 1));
 		this.afficher();
 
 		// System.out.println(this.deplacerPiece(1, 1, 1, 3, 0)); // déplacement d'une piece
@@ -47,7 +48,7 @@ public class Partie{
 						return deplacementValide(x, y, dx, dy, joueur, num, couleur);
 					}
 					else{
-						return 5;
+						return 5; // retourne 5 si il y un obstacle sur le trajet
 					}
 				}
 				else{
@@ -116,11 +117,31 @@ public class Partie{
 	public int trajOk(int x, int y, int dx, int dy){
 		int rx = dx - x; // coord relatif x
 		int ry = dy - y; // coord relatif y
-		int num = 0;
+		int num = this.echequier.getEchec(x, y).getNumPiece();;
+		int dirx = 0, diry = 0;
+		int coordx = 0, coordy = 0;
 
-		for (int i = 0; i >= ry; i--) {
-			num = this.echequier.getEchec(x, y + i).getNumPiece();
-			System.out.println(num);
+		if (rx < 0) {dirx = -1;}
+		else if (rx > 0) {dirx = 1;}
+		else {dirx = 0;}
+
+		if (ry < 0) {diry = -1;}
+		else if (ry > 0) {diry = 1;}
+		else {diry = 0;}
+
+		if (num != 4){
+			for (int i = 1, j = 1; i <= Math.abs(rx) || i <= Math.abs(ry); i++, j++) {
+				coordx = i * dirx;
+				coordy = j * diry;
+				num = this.echequier.getEchec(x + coordx, y + coordy).getNumPiece();
+				System.out.println(num);
+				if (num != 0) {
+					return 1;
+				}
+			}
+		}
+		else{
+			num = this.echequier.getEchec(dx, dy).getNumPiece();
 			if (num != 0) {
 				return 1;
 			}
