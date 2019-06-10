@@ -134,7 +134,6 @@ public class Partie{
 				coordx = i * dirx;
 				coordy = j * diry;
 				num = this.echequier.getEchec(x + coordx, y + coordy).getNumPiece();
-				System.out.println(num);
 				if (num != 0) {
 					return 1;
 				}
