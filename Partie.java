@@ -6,8 +6,8 @@ public class Partie{
 	private Echequier echequier; // //échéquier ou ce trouve les piceces 
 
 	public Partie(){
-		// this.joueur.add(new Joueur(0));
-		// this.joueur.add(new Joueur(1));
+		this.joueur.add(new Joueur(0));
+		this.joueur.add(new Joueur(1));
 		this.echequier = new Echequier();
 	}
 
@@ -70,6 +70,8 @@ public class Partie{
 		int dep = 0, deb0 = 0, deb1 = 0;
 		int rx = dx - x; // coord relatif x
 		int ry = dy - y; // coord relatif y
+		int numAutre = this.echequier.getEchec(dx, dy).getNumPiece(); // 
+		int couleurAutre = this.echequier.getEchec(dx, dy).getCouleur(); // 
 
 		switch (num) {
 			case 1 : // Roi
@@ -107,8 +109,12 @@ public class Partie{
 				break;
 		}
 
+		if (numAutre != 0 && couleurAutre != couleur)
+			this.prendrePiece(x, y, joueur, couleur);
+		
 		this.echequier.setEchec(x, y, 0, couleur); // remplace la piece au coord initial par une piece null
 		this.echequier.setEchec(dx, dy, num, couleur); // remplace la piece null au coord d'arriver par la piece copier au par avant
+		
 		return 0; // retourne 0 si tout ce passe bien
 	}
 	public int trajOk(int x, int y, int dx, int dy){
@@ -134,11 +140,6 @@ public class Partie{
 				num = this.echequier.getEchec(x + coordx, y + coordy).getNumPiece();
 				if (num != 0) 
 					return 1;
-					// if (x + coordx == dx && y + coordy == dy) {
-					// 	couleurAutrePiece = this.echequier.getEchec(x + coordx, y + coordy).getNumPiece();
-					// 	return this.prendrePiece(dx, dy, couleurInit, couleurAutrePiece);
-					// }
-					// else
 			}
 		}
 		else{
@@ -147,13 +148,9 @@ public class Partie{
 				return 1;
 		}
 
-		return 0;
+		return 0; // retourne 0 si il n'y aucun obstacle
 	}
-	public int prendrePiece(int x, int y, int joueur, int couleurAutrePiece){
-		if (joueur == couleurAutrePiece) {
-			return 0;
-		}
-		else
-			return 1;
+	public int prendrePiece(int x, int y, int joueur, int couleurAutre){
+		return 0;
 	}
 }
