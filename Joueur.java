@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Joueur{
 	private int couleur;
 	private int pts;
+	private ArrayList<Integer> prise;
 
 	public Joueur(int c){
 		this.couleur = c;

@@ -16,4 +16,7 @@ public class PieceNull extends Piece implements InterPieceNull{
 	public int getNumPiece(){
 		return this.numPiece;
 	}
+	public int getPts(){
+		return this.pts;
+	}
 }

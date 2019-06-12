@@ -6,6 +6,7 @@ public class Partie{
 	private Echequier echequier; // //échéquier ou ce trouve les piceces 
 
 	public Partie(){
+		this.joueur = new ArrayList<Joueur>();
 		this.joueur.add(new Joueur(0));
 		this.joueur.add(new Joueur(1));
 		this.echequier = new Echequier();
@@ -18,10 +19,14 @@ public class Partie{
 	public void lancerPartie(){
 		//this.echequier.setEchec(3, 1, 2, 0);
 		this.echequier.setEchec(3, 6, 2, 1);
-		this.echequier.setEchec(3, 1, 6, 1);
+		this.echequier.setEchec(3, 1, 2, 0);
+		this.echequier.setEchec(5, 3, 4, 0);
 		
 		this.afficher();
-		System.out.println(this.deplacerPiece(3, 6, 3, 1, 1));
+		System.out.println("retour : " + this.deplacerPiece(3, 6, 3, 1, 1));
+		this.afficher();
+		System.out.println("retour : " + this.deplacerPiece(3, 1, 5, 3, 1));
+		// System.out.println("retour : " + this.deplacerPiece(3, 6, 6, 6, 1));
 		this.afficher();
 
 		// System.out.println(this.deplacerPiece(1, 1, 1, 3, 0)); // déplacement d'une piece
@@ -109,12 +114,16 @@ public class Partie{
 				break;
 		}
 
-		if (numAutre != 0 && couleurAutre != couleur)
-			this.prendrePiece(x, y, joueur, couleur);
-		
-		this.echequier.setEchec(x, y, 0, couleur); // remplace la piece au coord initial par une piece null
-		this.echequier.setEchec(dx, dy, num, couleur); // remplace la piece null au coord d'arriver par la piece copier au par avant
-		
+		if (numAutre != 0 && couleurAutre != couleur) {
+			this.prendrePiece(dx, dy, joueur, couleur);
+			this.echequier.setEchec(x, y, 0, couleur); // remplace la piece au coord initial par une piece null
+			this.echequier.setEchec(dx, dy, num, couleur); // remplace la piece null au coord d'arriver par la piece copier au par avant
+		}
+		else if (numAutre == 0){
+			this.echequier.setEchec(x, y, 0, couleur); // remplace la piece au coord initial par une piece null
+			this.echequier.setEchec(dx, dy, num, couleur); // remplace la piece null au coord d'arriver par la piece copier au par avant
+		}
+
 		return 0; // retourne 0 si tout ce passe bien
 	}
 	public int trajOk(int x, int y, int dx, int dy){
@@ -151,6 +160,14 @@ public class Partie{
 		return 0; // retourne 0 si il n'y aucun obstacle
 	}
 	public int prendrePiece(int x, int y, int joueur, int couleurAutre){
+		int ptsPiece = this.echequier.getEchec(x, y).getPts();
+		int ptsJoueur = this.getJoueur(joueur).getPts();
+
+		this.getJoueur(joueur).setPts(ptsJoueur + ptsPiece);
+
+		ptsJoueur = this.getJoueur(joueur).getPts();
+		System.out.println("point joueur " + joueur + " : " + ptsJoueur);
+
 		return 0;
 	}
 }

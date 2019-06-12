@@ -16,4 +16,7 @@ public class Fou extends Piece implements InterFou{
 	public int getNumPiece(){
 		return this.numPiece;
 	}
+	public int getPts(){
+		return this.pts;
+	}
 }

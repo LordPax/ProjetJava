@@ -16,4 +16,7 @@ public class Roi extends Piece implements InterRoi{
 	public int getNumPiece(){
 		return this.numPiece;
 	}
+	public int getPts(){
+		return this.pts;
+	}
 }

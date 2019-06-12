@@ -16,4 +16,7 @@ public class Pion extends Piece implements InterPion{
 	public int getNumPiece(){
 		return this.numPiece;
 	}
+	public int getPts(){
+		return this.pts;
+	}
 }

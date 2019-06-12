@@ -16,4 +16,7 @@ public class Dame extends Piece implements InterDame{
 	public int getNumPiece(){
 		return this.numPiece;
 	}
+	public int getPts(){
+		return this.pts;
+	}
 }

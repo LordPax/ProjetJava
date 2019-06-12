@@ -16,4 +16,7 @@ public class Tour extends Piece implements InterTour{
 	public int getNumPiece(){
 		return this.numPiece;
 	}
+	public int getPts(){
+		return this.pts;
+	}
 }

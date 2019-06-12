@@ -16,4 +16,7 @@ public class Cavalier extends Piece implements InterCavalier{
 	public int getNumPiece(){
 		return this.numPiece;
 	}
+	public int getPts(){
+		return this.pts;
+	}
 }
