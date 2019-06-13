@@ -17,27 +17,20 @@ public class Partie{
 	}
 
 	public void lancerPartie(){
-		//this.echequier.setEchec(3, 1, 2, 0);
-		this.echequier.setEchec(3, 6, 2, 1);
-		this.echequier.setEchec(3, 1, 2, 0);
-		this.echequier.setEchec(5, 3, 4, 0);
+		this.echequier.setEchec(4, 6, 6, 0);
+		this.echequier.setEchec(3, 1, 6, 1);
+		this.echequier.setEchec(4, 3, 6, 1);
+		this.echequier.setEchec(3, 5, 6, 1);
 		
 		this.afficher();
-		System.out.println("retour : " + this.deplacerPiece(3, 6, 3, 1, 1));
+		System.out.println("retour : " + this.deplacerPiece(4, 6, 4, 4, 0));
+		System.out.println("retour : " + this.deplacerPiece(3, 1, 3, 3, 1));
 		this.afficher();
-		System.out.println("retour : " + this.deplacerPiece(3, 1, 5, 3, 1));
-		// System.out.println("retour : " + this.deplacerPiece(3, 6, 6, 6, 1));
+		System.out.println("retour : " + this.deplacerPiece(4, 4, 3, 5, 0));
 		this.afficher();
 
-		// System.out.println(this.deplacerPiece(1, 1, 1, 3, 0)); // déplacement d'une piece
-		// this.afficher();
-		// System.out.println(this.deplacerPiece(7, 6, 7, 4, 1));
-		// this.afficher();
-		// System.out.println(this.echequier.getEchec(7, 6).getNom());
-		// System.out.println(this.deplacerPiece(5, 6, 5, 5, 1)); // retourne 1
-		// this.afficher();
-		// System.out.println(this.echequier.getEchec(7, 6).getNom());
-		// System.out.println(this.deplacerPiece(2, 1, 2, 3, 0)); // retourne 1
+		// System.out.println("retour : " + this.deplacerPiece(3, 1, 5, 3, 1));
+		// // System.out.println("retour : " + this.deplacerPiece(3, 6, 6, 6, 1));
 		// this.afficher();
 	}
 	public void afficher(){
@@ -47,6 +40,10 @@ public class Partie{
 			}
 			System.out.print("\n");
 		}
+
+		this.getJoueur(0).statistique();
+		this.getJoueur(1).statistique();
+
 		System.out.print("\n");
 	}
 	public int deplacerPiece(int x, int y, int dx, int dy, int joueur){ // x, y : coord initial; dx, dy : coord d'arriver; joueur : couleur du joueur
@@ -70,6 +67,9 @@ public class Partie{
 		}
 		else
 			return 3; // retourne 3 si les valeur d'entrer son invalide
+	}
+	public void h_deplacerPiece(char x, int y, char dx, int dy, int joueur){
+		
 	}
 	public int deplacementValide(int x, int y, int dx, int dy, int joueur, int num, int couleur){
 		int dep = 0, deb0 = 0, deb1 = 0;
@@ -105,16 +105,19 @@ public class Partie{
 				break;
 
 			case 6 : // Pion
-				dep = (couleur == 0) ? 1 : -1; // permet de ce déplacer dans un sens ou dans l'autre en fonction de la valeur de la couleur du pion
-				deb0 = (y == 1 && couleur == 0) ? 2 : 1; // permet à un pion blanc de pouvoir avancer de 2 case si le pion est a son point départ
-				deb1 = (y == 6 && couleur == 1) ? 2 : 1; // idem mais pour les pion noir
+				dep = (couleur == 0) ? -1 : 1; // permet de ce déplacer dans un sens ou dans l'autre en fonction de la valeur de la couleur du pion
+				deb0 = (y == 1 && couleur == 1) ? 2 : 1; // permet à un pion blanc de pouvoir avancer de 2 case si le pion est a son point départ
+				deb1 = (y == 6 && couleur == 0) ? 2 : 1; // idem mais pour les pion noir
 
-				if (!(x == dx && (rx == deb0 * dep || ry == deb1 * dep)))
+				if (!(x == dx && (ry == deb0 * dep || ry == deb1 * dep) && numAutre == 0))
 					return 4; // retourne 4 si le déplacement est invalide pour cette piece
+				else if ((ry == ry * dep && numAutre != 0)){
+					return 6;
+				}
 				break;
 		}
 
-		if (numAutre != 0 && couleurAutre != couleur) {
+		if (numAutre != 0 && numAutre != 1 && couleurAutre != couleur) {
 			this.prendrePiece(dx, dy, joueur, couleur);
 			this.echequier.setEchec(x, y, 0, couleur); // remplace la piece au coord initial par une piece null
 			this.echequier.setEchec(dx, dy, num, couleur); // remplace la piece null au coord d'arriver par la piece copier au par avant
@@ -162,11 +165,10 @@ public class Partie{
 	public int prendrePiece(int x, int y, int joueur, int couleurAutre){
 		int ptsPiece = this.echequier.getEchec(x, y).getPts();
 		int ptsJoueur = this.getJoueur(joueur).getPts();
+		int numPiece = this.echequier.getEchec(x, y).getNumPiece();
 
 		this.getJoueur(joueur).setPts(ptsJoueur + ptsPiece);
-
-		ptsJoueur = this.getJoueur(joueur).getPts();
-		System.out.println("point joueur " + joueur + " : " + ptsJoueur);
+		this.getJoueur(joueur).addPrise(numPiece);
 
 		return 0;
 	}

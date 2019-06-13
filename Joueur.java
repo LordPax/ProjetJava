@@ -6,6 +6,7 @@ public class Joueur{
 	private ArrayList<Integer> prise;
 
 	public Joueur(int c){
+		this.prise = new ArrayList<Integer>();
 		this.couleur = c;
 		this.pts = 0;
 	}
@@ -16,6 +17,9 @@ public class Joueur{
 	public int getCouleur(){
 		return this.couleur;
 	}
+	public int getPrise(int p){
+		return this.prise.get(p);
+	}
 
 	public void setPts(int pts){
 		this.pts = pts;
@@ -23,4 +27,24 @@ public class Joueur{
 	public void setCouleur(int c){
 		this.couleur = c;
 	}
+	public void addPrise(int v){
+		this.prise.add(v);
+	}
+
+	public void statistique(){
+		System.out.println("=+=+=+=+=+= Joueur " + this.h_couleur() + " =+=+=+=+=+=");
+		System.out.println("Point : " + this.getPts());
+
+	}
+	public String h_couleur(){
+		return (this.couleur == 0) ? "Blanc" : "Noir"; 
+	}
+	// public String h_prise(){
+	// 	String prise, piece;
+
+	// 	for (int i = 0; i < this.prise.size(); i++){
+	// 		piece = 
+	// 		prise += 
+	// 	}
+	// }
 }
