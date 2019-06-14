@@ -1,6 +1,16 @@
 import java.util.ArrayList;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 
-public class Partie{
+public class Partie {
 	private int tour; // nombre de tour éffectuer par les joueurs
 	private ArrayList<Joueur> joueur; // joueurs au nombre de 2
 	private Echequier echequier; // //échéquier ou ce trouve les piceces 
@@ -21,12 +31,14 @@ public class Partie{
 		this.echequier.setEchec(3, 1, 6, 1);
 		this.echequier.setEchec(4, 3, 6, 1);
 		this.echequier.setEchec(3, 5, 6, 1);
+
+		h_deplacerPiece('B', 1, 'A', 1, 1);
 		
 		this.afficher();
-		System.out.println("retour : " + this.deplacerPiece(4, 6, 4, 4, 0));
+		System.out.println("retour : " + this.h_deplacerPiece('E', 7, 'E', 5, 0));
 		System.out.println("retour : " + this.deplacerPiece(3, 1, 3, 3, 1));
 		this.afficher();
-		System.out.println("retour : " + this.deplacerPiece(4, 4, 3, 5, 0));
+		System.out.println("retour : " + this.deplacerPiece(4, 4, 5, 3, 0));
 		this.afficher();
 
 		// System.out.println("retour : " + this.deplacerPiece(3, 1, 5, 3, 1));
@@ -68,8 +80,11 @@ public class Partie{
 		else
 			return 3; // retourne 3 si les valeur d'entrer son invalide
 	}
-	public void h_deplacerPiece(char x, int y, char dx, int dy, int joueur){
-		
+	public int h_deplacerPiece(char x, int y, char dx, int dy, int joueur){
+		int x2 = x - 65, dx2 = dx - 65;
+		int y2 = y - 1, dy2 = dy - 1;
+
+		return deplacerPiece(x2, y2, dx2, dy2, joueur);
 	}
 	public int deplacementValide(int x, int y, int dx, int dy, int joueur, int num, int couleur){
 		int dep = 0, deb0 = 0, deb1 = 0;
@@ -109,11 +124,8 @@ public class Partie{
 				deb0 = (y == 1 && couleur == 1) ? 2 : 1; // permet à un pion blanc de pouvoir avancer de 2 case si le pion est a son point départ
 				deb1 = (y == 6 && couleur == 0) ? 2 : 1; // idem mais pour les pion noir
 
-				if (!(x == dx && (ry == deb0 * dep || ry == deb1 * dep) && numAutre == 0))
+				if (!((rx == 1 || rx == -1) && ry == dep && numAutre != 0 || x == dx && (ry == deb0 * dep || ry == deb1 * dep) && numAutre == 0))
 					return 4; // retourne 4 si le déplacement est invalide pour cette piece
-				else if ((ry == ry * dep && numAutre != 0)){
-					return 6;
-				}
 				break;
 		}
 

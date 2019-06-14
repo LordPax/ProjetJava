@@ -34,17 +34,18 @@ public class Joueur{
 	public void statistique(){
 		System.out.println("=+=+=+=+=+= Joueur " + this.h_couleur() + " =+=+=+=+=+=");
 		System.out.println("Point : " + this.getPts());
-
+		System.out.println("Pieces prise : ");
 	}
 	public String h_couleur(){
 		return (this.couleur == 0) ? "Blanc" : "Noir"; 
 	}
 	// public String h_prise(){
-	// 	String prise, piece;
+	// 	String piece;
 
-	// 	for (int i = 0; i < this.prise.size(); i++){
-	// 		piece = 
-	// 		prise += 
+	// 	for (int i = 0; i < this.prise.size(); i++) {
+	// 		piece += String.valueOf(this.getPrise(i)) + " ";
 	// 	}
+
+	// 	return piece;
 	// }
 }
