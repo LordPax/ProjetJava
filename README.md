@@ -20,7 +20,7 @@ Projet
 
 * __commande git :__
 	```bash
-	git add *.java diagrammes (*.java pour éviter d'ajouter les .class)
+	git add *.java diagrammes
 	git commit -m "ton commantaire"
 	git push origin master
 	```
