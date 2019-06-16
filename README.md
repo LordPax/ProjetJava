@@ -14,13 +14,13 @@ Projet
 
 * __commande java :__
 	```bash
-	javac --module-path $PATH_TO_FX --add-modules javafx.controls \*.java
+	javac --module-path $PATH_TO_FX --add-modules javafx.controls *.java
 	java --module-path $PATH_TO_FX --add-modules javafx.controls Main
 	```
 
 * __commande git :__
 	```bash
-	git add \*.java diagrammes _(\*.java pour éviter d'ajouter les .class)_
+	git add *.java diagrammes (*.java pour éviter d'ajouter les .class)
 	git commit -m "ton commantaire"
 	git push origin master
 	```
