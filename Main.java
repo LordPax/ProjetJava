@@ -1,26 +1,23 @@
 import java.util.ArrayList;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.event.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.stage.*;
 
 public class Main extends Application{
+
+	@Override
 	public void start(Stage stage){
-		Label l = new Label("salut bande de connard");
-		Scene scene = new Scene(new StackPane(l), 500, 350);
-		stage.setScene(scene);
-		stage.show();
+		Affichage aff = new Affichage(500, 350);
+        aff.init(stage);
 	}
 
 	public static void main(String[] args){
 		Partie p = new Partie();
 		p.lancerPartie(); // lance la partie
-		launch();
+		launch(Main.class, args);
 	}
 }
