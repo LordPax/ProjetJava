@@ -19,4 +19,7 @@ public class PieceNull extends Piece implements InterPieceNull{
 	public int getPts(){
 		return this.pts;
 	}
+	public String getImage(){
+		return this.imageB; // si la couleur == 0 (si elle est blanche) alors retourne symboleB (picece de couleur blanche) sinon retourne symboleN (picece de couleur noire)
+	}
 }

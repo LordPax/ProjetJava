@@ -9,5 +9,7 @@ public interface InterRoi{
 	public final String nom = "Roi";
 	public final String symboleB = "♔";
 	public final String symboleN = "♚";
+	public final String imageB = "Images/Roi_B.png";
+	public final String imageN = "Images/Roi_N.png";
 	public final int numPiece = 1;
 }

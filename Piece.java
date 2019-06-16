@@ -40,4 +40,5 @@ public abstract class Piece{
 	public abstract int getPts();
 	public abstract String getSymbole();
 	public abstract int getNumPiece();
+	public abstract String getImage();
 }

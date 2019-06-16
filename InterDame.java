@@ -9,5 +9,7 @@ public interface InterDame{
 	public final String nom = "Reine";
 	public final String symboleB = "♕";
 	public final String symboleN = "♛";
+	public final String imageB = "Images/Dame_B.png";
+	public final String imageN = "Images/Dame_N.png";
 	public final int numPiece = 2;
 }

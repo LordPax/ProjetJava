@@ -20,26 +20,39 @@ public class Partie {
 		this.joueur.add(new Joueur(0));
 		this.joueur.add(new Joueur(1));
 		this.echequier = new Echequier();
+		this.tour = 0;
 	}
 
+	public Echequier getEchequier(){
+		return this.echequier;
+	}
 	public Joueur getJoueur(int c){
 		return this.joueur.get(c);
 	}
+	public int getTour(){
+		return this.tour;
+	}
+	public void tourPlus(){
+		this.tour++;
+	}
+	public int tourJeu(){
+		return this.tour % 2;
+	}
 
 	public void lancerPartie(){
-		this.echequier.setEchec(4, 6, 6, 0);
-		this.echequier.setEchec(3, 1, 6, 1);
-		this.echequier.setEchec(4, 3, 6, 1);
-		this.echequier.setEchec(3, 5, 6, 1);
+		// this.echequier.setEchec(4, 6, 6, 0);
+		// this.echequier.setEchec(3, 1, 6, 1);
+		// this.echequier.setEchec(4, 3, 6, 1);
+		// this.echequier.setEchec(3, 5, 6, 1);
 
-		h_deplacerPiece('B', 1, 'A', 1, 1);
+		// h_deplacerPiece('B', 1, 'A', 1, 1);
 		
-		this.afficher();
-		System.out.println("retour : " + this.h_deplacerPiece('E', 7, 'E', 5, 0));
-		System.out.println("retour : " + this.deplacerPiece(3, 1, 3, 3, 1));
-		this.afficher();
-		System.out.println("retour : " + this.deplacerPiece(4, 4, 5, 3, 0));
-		this.afficher();
+		// this.afficher();
+		// System.out.println("retour : " + this.h_deplacerPiece('E', 7, 'E', 5, 0));
+		// System.out.println("retour : " + this.deplacerPiece(3, 1, 3, 3, 1));
+		// this.afficher();
+		// System.out.println("retour : " + this.deplacerPiece(4, 4, 5, 3, 0));
+		// this.afficher();
 
 		// System.out.println("retour : " + this.deplacerPiece(3, 1, 5, 3, 1));
 		// // System.out.println("retour : " + this.deplacerPiece(3, 6, 6, 6, 1));

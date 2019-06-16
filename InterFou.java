@@ -9,5 +9,7 @@ public interface InterFou{
 	public final String nom = "Fou";
 	public final String symboleB = "♗";
 	public final String symboleN = "♝";
+	public final String imageB = "Images/Fou_B.png";
+	public final String imageN = "Images/Fou_N.png";
 	public final int numPiece = 5;
 }

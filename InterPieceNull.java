@@ -9,5 +9,7 @@ public interface InterPieceNull{
 	public final String nom = "PN";
 	public final String symboleB = ".";
 	public final String symboleN = ".";
+	public final String imageB = "Images/PieceNull.png";
+	public final String imageN = "Images/PieceNull.png";
 	public final int numPiece = 0;
 }
