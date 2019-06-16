@@ -20,6 +20,9 @@ public class Joueur{
 	public int getPrise(int p){
 		return this.prise.get(p);
 	}
+	public int getTaillePrise(){
+		return this.prise.size();
+	}
 
 	public void setPts(int pts){
 		this.pts = pts;
