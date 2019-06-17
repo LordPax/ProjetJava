@@ -181,6 +181,8 @@ public class Affichage{
 		Label joueur_N = new Label("Joueur noir");
 		Label infoScore_B = new Label("score : ");
 		Label infoScore_N = new Label("score : ");
+		String text = (this.partie.getTour() % 2 == 0) ? "Blanc" : "Noir";
+		Label labTour = new Label("Tour au " + text);
 
 		this.prise_B = prise(0);
 		this.prise_N = prise(1);
@@ -198,6 +200,7 @@ public class Affichage{
 		infoScore_N.setFont(new Font(fontSize2));
 		score_B.setFont(new Font(fontSize2));
 		score_N.setFont(new Font(fontSize2));
+		labTour.setFont(new Font(fontSize));
 
 		gp1.getChildren().add(infoScore_B);
 		gp1.getChildren().add(score_B);
@@ -212,6 +215,7 @@ public class Affichage{
 		sc.getChildren().add(joueur_N);
 		sc.getChildren().add(gp2);
 		sc.getChildren().add(prise_N);
+		sc.getChildren().add(labTour);
 
 		g.getChildren().add(fond);
 		g.getChildren().add(sc);
@@ -231,22 +235,22 @@ public class Affichage{
 			prise = this.partie.getJoueur(c).getPrise(i);
 			switch(prise){
 				case 1:
-					url = (c == 0) ? "Images/Roi_B.png" : "Images/Roi_N.png";
+					url = (c == 1) ? "Images/Roi_B.png" : "Images/Roi_N.png";
 					break;
 				case 2:
-					url = (c == 0) ? "Images/Dame_B.png" : "Images/Dame_N.png";
+					url = (c == 1) ? "Images/Dame_B.png" : "Images/Dame_N.png";
 					break;
 				case 3:
-					url = (c == 0) ? "Images/Tour_B.png" : "Images/Tour_N.png";
+					url = (c == 1) ? "Images/Tour_B.png" : "Images/Tour_N.png";
 					break;
 				case 4:
-					url = (c == 0) ? "Images/Cavalier_B.png" : "Images/Cavalier_N.png";
+					url = (c == 1) ? "Images/Cavalier_B.png" : "Images/Cavalier_N.png";
 					break;
 				case 5:
-					url = (c == 0) ? "Images/Fou_B.png" : "Images/Fou_N.png";
+					url = (c == 1) ? "Images/Fou_B.png" : "Images/Fou_N.png";
 					break;
 				case 6:
-					url = (c == 0) ? "Images/Pion_B.png" : "Images/Pion_N.png";
+					url = (c == 1) ? "Images/Pion_B.png" : "Images/Pion_N.png";
 					break;
 			}
 

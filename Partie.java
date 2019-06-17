@@ -59,17 +59,17 @@ public class Partie {
 		// this.afficher();
 	}
 	public void afficher(){
-		for (int i = 0; i < 8; i++){
-			for (int j = 0; j < 8; j++){
-				System.out.print(this.echequier.getEchec(j, i).getSymbole() + " "); // affichage 1 par 1 des piceces de l'échéquier
-			}
-			System.out.print("\n");
-		}
+		// for (int i = 0; i < 8; i++){
+		// 	for (int j = 0; j < 8; j++){
+		// 		System.out.print(this.echequier.getEchec(j, i).getSymbole() + " "); // affichage 1 par 1 des piceces de l'échéquier
+		// 	}
+		// 	System.out.print("\n");
+		// }
 
-		this.getJoueur(0).statistique();
-		this.getJoueur(1).statistique();
+		// this.getJoueur(0).statistique();
+		// this.getJoueur(1).statistique();
 
-		System.out.print("\n");
+		// System.out.print("\n");
 	}
 	public int deplacerPiece(int x, int y, int dx, int dy, int joueur){ // x, y : coord initial; dx, dy : coord d'arriver; joueur : couleur du joueur
 		int num = this.echequier.getEchec(x, y).getNumPiece(); // "copie" la piece au coord initial
