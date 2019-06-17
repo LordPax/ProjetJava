@@ -18,8 +18,6 @@ public class Main extends Application{
 	public void start(Stage stage){
 		Affichage aff = new Affichage(1000, 500);
 		this.partie = new Partie();
-		this.partie.afficher();
-
 		
 		aff.init(stage, this.partie);
 	}
